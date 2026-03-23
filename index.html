@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Adelaide Solar & Electrical Services: Solar, battery storage, EV, and electrical solutions for homes and businesses." />
+    <title>Adelaide Solar & Electrical Services</title>
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet" />
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+
+    <style>
+        :root {
+            --brand-green: #2ecc71;
+            --brand-blue: #0a2540;
+            --brand-light: #f7fafc;
+            --brand-gray: #f4f6f9;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #10213f;
+            background: var(--brand-light);
+        }
+
+        .topbar {
+            background: var(--brand-blue);
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .topbar a {
+            color: #d1e7ff;
+        }
+
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(10, 37, 64, 0.07);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .navbar-collapse {
+            align-items: center !important;
+        }
+
+        .navbar .navbar-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .navbar-brand,
+        .navbar a.btn {
+            height: 75px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .navbar .btn {
+            margin-top: 0 !important;
+        }
+
+        .hero {
+            position: relative;
+            background: linear-gradient(160deg, rgba(46, 204, 113, 0.95), rgba(10, 37, 64, 0.90));
+            color: #fff;
+            min-height: calc(100vh - 120px);
+            display: flex;
+            align-items: center;
+            padding: 4rem 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.32;
+            filter: blur(1px);
+            z-index: 0;
+        }
+
+        .hero .content,
+        .hero .illustration {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .btn-primary,
+        .hero .btn-outline-light {
+            min-width: 170px;
+            border-radius: 40px;
+            font-weight: 600;
+        }
+
+        .section-title h6 {
+            color: var(--brand-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+        }
+
+        .card-modern {
+            border: 1px solid rgba(15, 35, 64, 0.12);
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(10, 37, 64, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-modern:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(10, 37, 64, 0.16);
+        }
+
+        .card-modern .icon {
+            width: 60px;
+            height: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(140deg, rgba(46, 204, 113, 0.2), rgba(10, 37, 64, 0.13));
+            color: var(--brand-blue);
+            font-size: 1.3rem;
+        }
+
+        .benefit-item {
+            border-radius: 18px;
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid rgba(10, 37, 64, 0.1);
+            box-shadow: 0 8px 20px rgba(10, 37, 64, 0.06);
+        }
+
+        .project-card {
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 26px rgba(10, 37, 64, 0.1);
+            transition: transform 0.25s ease;
+            background-color: white;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-meta {
+            font-size: 0.86rem;
+            color: #56637a;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 10px 28px rgba(10, 37, 64, 0.08);
+            padding: 1.5rem;
+            border: 1px solid rgba(15, 35, 64, 0.09);
+        }
+
+        .cta-banner {
+            background: linear-gradient(135deg, #2ecc71 0%, #0a2540 100%);
+            color: #fff;
+            border-radius: 18px;
+            box-shadow: 0 16px 26px rgba(10, 37, 64, 0.25);
+        }
+
+        .footer {
+            background: #0a2540;
+            color: #d1e7ff;
+        }
+
+        .footer a {
+            color: #9fd8ff;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 4rem 0 2.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.85rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-primary text-white py-2 d-none d-lg-block">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 d-flex gap-4">
+                    <small><i class="fas fa-map-marker-alt me-2"></i>Unit 5, 14 Solar Way, Adelaide, SA</small>
+                    <small><i class="far fa-clock me-2"></i>Mon - Sat: 7:30am - 5:30pm</small>
+                    <small><i class="fas fa-phone-alt me-2"></i>(08) 7000 1234</small>
+                </div>
+                <div class="col-lg-4 text-end">
+                    <a href="#contact" class="text-white text-decoration-none fw-semibold">Book a free consultation <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container d-flex align-items-center">
+            <a class="navbar-brand fw-bold text-success" href="#home">Adelaide Solar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-lg-flex align-items-center" id="navbarCollapse">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center mt-3 mt-lg-0 ms-lg-4">
+                    <a class="btn btn-success rounded-pill" href="#contact">Get a Free Quote</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 content text-white">
+                    <h1 class="display-5 fw-bold">Smart Solar & Energy Solutions for a Sustainable Future</h1>
+                    <p class="lead mt-4">Custom solar, battery, and electrical solutions for homes and businesses. Reduce costs and unlock energy independence with tailored systems.</p>
+                    <div class="d-flex gap-3 mt-4 flex-wrap">
+                        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+                        <a href="#projects" class="btn btn-outline-light">View Projects</a>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 mt-4 flex-wrap text-white-75">
+                        <div><i class="fas fa-check-circle me-2 text-success"></i>Expert System Design</div>
+                        <div><i class="fas fa-check-circle me-2 text-success"></i>Certified Installers</div>
+                        <div><i class="fas fa-check-circle me-2 text-success"></i>Fast Turnaround</div>
+                    </div>
+                </div>
+                <div class="col-lg-6 illustration text-end mt-5 mt-lg-0 d-none d-lg-block">
+                    <img src="img/carousel-2.jpg" class="img-fluid rounded-4 shadow" alt="Solar installation" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section id="services" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-title">
+                    <h6>Our Services</h6>
+                </div>
+                <h2 class="fw-bold">Innovative Solar, Battery & Electrical Solutions</h2>
+                <p class="text-muted">End-to-end solutions for residential, commercial and industrial clients.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <article class="card-modern p-4 h-100" aria-label="Solar panels installation">
+                        <div class="icon"><i class="fas fa-solar-panel"></i></div>
+                        <h5 class="mt-3">Grid-connected Solar</h5>
+                        <p class="text-muted">High-efficiency panels with seamless utility integration and net metering support.</p>
+                        <a href="#" class="text-success fw-semibold">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <article class="card-modern p-4 h-100" aria-label="Battery storage solutions">
+                        <div class="icon"><i class="fas fa-battery-full"></i></div>
+                        <h5 class="mt-3">Battery Storage</h5>
+                        <p class="text-muted">VPP-ready systems and blackout protection for energy security and load smoothing.</p>
+                        <a href="#" class="text-success fw-semibold">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <article class="card-modern p-4 h-100" aria-label="EV charger installation">
+                        <div class="icon"><i class="fas fa-charging-station"></i></div>
+                        <h5 class="mt-3">EV Charger Install</h5>
+                        <p class="text-muted">Smart charger deployment for homes and fleets, with automated energy scheduling.</p>
+                        <a href="#" class="text-success fw-semibold">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <article class="card-modern p-4 h-100" aria-label="Electrical and lighting services">
+                        <div class="icon"><i class="fas fa-plug"></i></div>
+                        <h5 class="mt-3">Electrical Services</h5>
+                        <p class="text-muted">Lighting, wiring, security and generator system design with expert workmanship.</p>
+                        <a href="#" class="text-success fw-semibold">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                    </article>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-5">
+                <div class="col-md-4">
+                    <div class="benefit-item">
+                        <h6 class="text-success"><i class="fas fa-money-bill-wave me-2"></i>Reduce Electricity Bills</h6>
+                        <p class="mb-0">Optimize energy production and usage with tailored PV + storage systems and smart controls.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-item">
+                        <h6 class="text-success"><i class="fas fa-sun me-2"></i>Energy Independence</h6>
+                        <p class="mb-0">Stay resilient with grid-optional solutions, storage backup and microgrid-ready installations.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-item">
+                        <h6 class="text-success"><i class="fas fa-brain me-2"></i>Future-ready Systems</h6>
+                        <p class="mb-0">Scalable designs built for EVs, batteries, virtual power plants and smart demand response.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- About Start -->
+    <section id="about" class="container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-6">
+                    <img src="img/about.jpg" class="img-fluid rounded-4 shadow" alt="Adelaide Solar team" />
+                </div>
+                <div class="col-lg-6">
+                    <h6 class="text-success">About Adelaide Solar</h6>
+                    <h2 class="fw-bold mb-3">Trusted Solar, Battery & Electrical Experts in South Australia</h2>
+                    <p class="text-muted">Since 2013, Adelaide Solar has delivered high-performance renewable energy systems to residential, commercial, and industrial clients across SA. Our solutions reduce bills, increase resilience, and future-proof your property.</p>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Certified Clean Energy Council installers</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Full turnkey design, approvals, installation and support</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Commercial project delivery with safety and compliance</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-success rounded-pill py-3 px-5">Book a Free Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About End -->
+
+
+    <!-- Services Deep Dive -->
+    <section id="services" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h6 class="text-success">Our Core Services</h6>
+                <h1 class="mb-4">Designed for Adelaide Homes, Business and Industry</h1>
+                <p class="text-muted">We offer end-to-end energy solutions tailored to South Australian conditions, including generation, storage, EV enablement and electrical safety.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <article class="card-modern p-4 h-100" aria-label="Residential and commercial solar photovolatic systems">
+                        <div class="icon"><i class="fas fa-solar-panel"></i></div>
+                        <h5 class="mt-3">Solar PV System Install</h5>
+                        <p class="text-muted">High-efficiency panels, optimizers and advanced inverters. 5-10 year performance warranties with comprehensive maintenance plans.</p>
+                        <a href="#contact" class="text-success fw-semibold">Get a quote <i class="fas fa-arrow-right ms-1"></i></a>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <article class="card-modern p-4 h-100" aria-label="Battery storage and backup power systems">
+                        <div class="icon"><i class="fas fa-battery-full"></i></div>
+                        <h5 class="mt-3">Battery Storage</h5>
+                        <p class="text-muted">Smart energy storage for peak-shaving and blackout backup. Scalable capacity for 5kWh to 100kWh systems.</p>
+                        <a href="#contact" class="text-success fw-semibold">Book a consult <i class="fas fa-arrow-right ms-1"></i></a>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <article class="card-modern p-4 h-100" aria-label="EV charger installation and management">
+                        <div class="icon"><i class="fas fa-charging-station"></i></div>
+                        <h5 class="mt-3">EV Charger Installation</h5>
+                        <p class="text-muted">Single-phase and three-phase chargers, smart load management and grid-friendly scheduling to reduce demand charges.</p>
+                        <a href="#contact" class="text-success fw-semibold">Schedule site visit <i class="fas fa-arrow-right ms-1"></i></a>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <article class="card-modern p-4 h-100" aria-label="Electrical upgrades and safety compliance works">
+                        <div class="icon"><i class="fas fa-plug"></i></div>
+                        <h5 class="mt-3">Electrical Services</h5>
+                        <p class="text-muted">Switchboard upgrades, safety inspections, lighting, and certified licensed electrician services for device commissioning and compliance.</p>
+                        <a href="#contact" class="text-success fw-semibold">Contact our team <i class="fas fa-arrow-right ms-1"></i></a>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Deep Dive End -->
+
+
+    <!-- Feature Start -->
+    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+        <div class="container feature px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="p-lg-5 ps-lg-0">
+                        <h6 class="text-primary">Why Choose Us!</h6>
+                        <h1 class="mb-4">Complete Commercial & Residential Solar Systems</h1>
+                        <p class="mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
+                        <div class="row g-4">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="btn-lg-square bg-primary rounded-circle">
+                                        <i class="fa fa-check text-white"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="mb-0">Quality</p>
+                                        <h5 class="mb-0">Services</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="btn-lg-square bg-primary rounded-circle">
+                                        <i class="fa fa-user-check text-white"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="mb-0">Expert</p>
+                                        <h5 class="mb-0">Workers</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="btn-lg-square bg-primary rounded-circle">
+                                        <i class="fa fa-drafting-compass text-white"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="mb-0">Free</p>
+                                        <h5 class="mb-0">Consultation</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="btn-lg-square bg-primary rounded-circle">
+                                        <i class="fa fa-headphones text-white"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="mb-0">Customer</p>
+                                        <h5 class="mb-0">Support</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 pe-lg-0 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute img-fluid w-100 h-100" src="img/feature.jpg" style="object-fit: cover;" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature End -->
+
+
+    <!-- Projects Start -->
+    <section id="projects" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-title">
+                    <h6>Project Portfolio</h6>
+                </div>
+                <h2 class="fw-bold">Real-world Installations</h2>
+                <p class="text-muted">From aged care and industrial to residential and off-grid farms, we deliver reliable, accountable energy systems.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <article class="project-card">
+                        <img src="img/img-600x400-1.jpg" class="img-fluid" alt="100kW aged care project" />
+                        <div class="p-4">
+                            <h5>100kW Solar 	6 Aged Care Facility</h5>
+                            <p class="project-meta">Welland SA 	6 100kW 	6 80% self-consumption</p>
+                            <p class="mb-0">Cut operating cost by 57% and strengthened reliability with O&M contract.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <article class="project-card">
+                        <img src="img/img-600x400-5.jpg" class="img-fluid" alt="30kW factory project" />
+                        <div class="p-4">
+                            <h5>30kW Solar 	6 Manufacturing Facility</h5>
+                            <p class="project-meta">Athol Park SA 	6 30kW 	6 70% peak offset</p>
+                            <p class="mb-0">Integrated energy management reduces monthly demand charges by 40%.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <article class="project-card">
+                        <img src="img/img-600x400-3.jpg" class="img-fluid" alt="10kW residential project" />
+                        <div class="p-4">
+                            <h5>10kW Residential System</h5>
+                            <p class="project-meta">South Adelaide 	6 10kW 	6 3.5 year ROI</p>
+                            <p class="mb-0">Optimized rooftop layout and battery backup for evening loads.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <article class="project-card">
+                        <img src="img/img-600x400-4.jpg" class="img-fluid" alt="Off-grid farm project" />
+                        <div class="p-4">
+                            <h5>Off-grid Farm Microgrid</h5>
+                            <p class="project-meta">Rural SA 	6 50kW + 80kWh battery</p>
+                            <p class="mb-0">Full autonomy with smart control, generator integration, and remote monitoring.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-title">
+                    <h6>Testimonials</h6>
+                </div>
+                <h2 class="fw-bold">What Our Clients Say</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial-card">
+                        <p>“Adelaide Solar has helped us reduce factory power expenses by 50%. The team delivered on time and under budget.”</p>
+                        <strong>James R.</strong>, Factory Manager
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial-card">
+                        <p>“Off-grid implementation was flawless. Our farm now runs reliably even in power outages.”</p>
+                        <strong>Emily S.</strong>, Farm Owner
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial-card">
+                        <p>“The residential setup performs beautifully. The free quote and consultation process made it easy.”</p>
+                        <strong>Mark W.</strong>, Homeowner
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="container-xxl py-5">
+        <div class="container">
+            <div class="cta-banner p-5 text-white text-center">
+                <h2 class="fw-bold">Start your sustainable energy journey today</h2>
+                <p class="lead mb-4">Book a free consultation and receive a tailored, ROI-focused proposal.</p>
+                <a href="#contact" class="btn btn-light text-success rounded-pill px-5 py-2 fw-bold">Request a Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center gap-4">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold">About Adelaide Solar & Electrical Services</h2>
+                    <p class="text-muted">Founded in 2013, we are renewable energy specialists helping homes and businesses lower costs, improve reliability, and reduce carbon footprint.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Solar PV, battery storage, EV and microgrid expertise</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Full design, approvals, installation and support</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Commercial and industrial scale delivery with safety compliance</li>
+                    </ul>
+                </div>
+                <div class="col-lg-5">
+                    <div class="p-4 rounded-4 bg-white border shadow-sm">
+                        <h5 class="fw-bold">Our Mission</h5>
+                        <p class="mb-1">Provide cost-effective, future-proof energy solutions for a cleaner tomorrow.</p>
+                        <h5 class="fw-bold">Our Expertise</h5>
+                        <p class="mb-0">Solar PV, battery storage, EV systems, microgrids and energy optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-title">
+                    <h6>Contact Us</h6>
+                </div>
+                <h2 class="fw-bold">Request a Free Consultation</h2>
+                <p class="text-muted">Complete the form and our team will respond within one business day.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card-modern p-4">
+                        <form aria-label="Contact form">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Your Name" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Your Email" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Your Phone" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Tell us about your project" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success rounded-pill px-4">Submit Request</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card-modern p-4 h-100">
+                        <h5 class="fw-bold">Office Locations</h5>
+                        <p class="mb-1"><i class="fas fa-map-marker-alt text-success me-2"></i>75	6	7 Grange Road, Welland SA</p>
+                        <p class="mb-3"><i class="fas fa-map-marker-alt text-success me-2"></i>223 Hanson Rd, Athol Park SA</p>
+                        <h6 class="fw-semibold">Phone</h6>
+                        <p class="mb-3">1300 123 456</p>
+                        <h6 class="fw-semibold">Email</h6>
+                        <p class="mb-4">contact@adelaidesolar.com.au</p>
+                        <div class="ratio ratio-16x9">
+                            <iframe title="Adelaide Solar & Electrical Services location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345094177!2d144.96305761531862!3d-37.814107979751926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce7e33!2sMelbourne%20VIC%203000%2C%20Australia!5e0!3m2!1sen!2sus!4v1682017082230!5m2!1sen!2sus" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- End of main page content -->
+
+
+    <!-- Quote Start -->
+    <section id="quote" class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+        <div class="container quote px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-6 ps-lg-0 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute img-fluid w-100 h-100" src="img/quote.jpg" style="object-fit: cover;" alt="Solar expert consultation">
+                    </div>
+                </div>
+                <div class="col-lg-6 quote-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="p-lg-5 pe-lg-0">
+                        <h6 class="text-success">Free Proposal</h6>
+                        <h1 class="mb-4">Start with a No-obligation Quote</h1>
+                        <p class="mb-4 pb-2 text-muted">Tell us about your site and energy goals—our Adelaide team provides a customised system proposal, ROI estimate and compliance roadmap at no cost.</p>
+                        <form aria-label="Request a quote form">
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <label class="form-label visually-hidden" for="quote-name">Name</label>
+                                    <input id="quote-name" type="text" class="form-control border-0" placeholder="Full Name" style="height: 55px;" required>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label class="form-label visually-hidden" for="quote-email">Email</label>
+                                    <input id="quote-email" type="email" class="form-control border-0" placeholder="Email Address" style="height: 55px;" required>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label class="form-label visually-hidden" for="quote-phone">Phone</label>
+                                    <input id="quote-phone" type="tel" class="form-control border-0" placeholder="Phone Number" style="height: 55px;" required>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label class="form-label visually-hidden" for="quote-service">Service</label>
+                                    <select id="quote-service" class="form-select border-0" style="height: 55px;" required>
+                                        <option value="" disabled selected>Select service</option>
+                                        <option value="solar">Solar PV Installation</option>
+                                        <option value="battery">Battery Storage</option>
+                                        <option value="ev">EV Charger Setup</option>
+                                        <option value="electrical">Electrical Upgrade</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label visually-hidden" for="quote-message">Project details</label>
+                                    <textarea id="quote-message" class="form-control border-0" rows="3" placeholder="Tell us about your project or energy challenge" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-success rounded-pill py-3 px-5" type="submit">Request My Quote</button>
+                                </div>
+                            </div>
+                        </form>
+                        <p class="mt-4 text-muted small"><i class="fas fa-lock me-1"></i>We respect your privacy. Your data is secure and never shared.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Quote End -->
+
+
+
+
+
+    <!-- Footer Start -->
+    <footer class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Adelaide Solar HQ</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Unit 5, 14 Solar Way, Adelaide, SA 5000</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>(08) 7000 1234</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>contact@adelaidesolar.com.au</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light btn-social" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-square btn-outline-light btn-social" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-square btn-outline-light btn-social" href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <a class="btn btn-link text-white" href="#about">About Us</a><br />
+                    <a class="btn btn-link text-white" href="#services">Services</a><br />
+                    <a class="btn btn-link text-white" href="#projects">Projects</a><br />
+                    <a class="btn btn-link text-white" href="#testimonials">Testimonials</a><br />
+                    <a class="btn btn-link text-white" href="#contact">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Service Highlights</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check-circle me-2 text-success"></i>Residential Solar</li>
+                        <li><i class="fas fa-check-circle me-2 text-success"></i>Commercial Solar</li>
+                        <li><i class="fas fa-check-circle me-2 text-success"></i>Battery Storage</li>
+                        <li><i class="fas fa-check-circle me-2 text-success"></i>EV Charging</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Newsletter</h5>
+                    <p class="text-muted">Stay informed with project updates, solar incentives and technology insights.</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="email" placeholder="Enter your email" aria-label="Newsletter email">
+                        <button type="button" class="btn btn-success py-2 position-absolute top-0 end-0 mt-2 me-2">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright py-3 border-top border-secondary">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0 text-white">
+                        &copy; 2026 Adelaide Solar & Electrical Services. All rights reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end text-muted">
+                        <a class="text-muted text-decoration-none" href="#">Privacy Policy</a> | <a class="text-muted text-decoration-none" href="#">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
