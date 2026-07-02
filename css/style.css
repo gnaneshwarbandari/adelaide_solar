@@ -112,6 +112,16 @@
     margin-left: 8px;
 }
 
+.navbar-brand img {
+    height: 50px;
+    width: auto;
+}
+
+.navbar-brand span {
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
 @media (max-width: 991.98px) {
     .navbar .navbar-nav .nav-link  {
         margin-right: 0;
