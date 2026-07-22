@@ -742,37 +742,87 @@
                         <h6 class="text-success">Free Proposal</h6>
                         <h1 class="mb-4">Start with a No-obligation Quote</h1>
                         <p class="mb-4 pb-2 text-muted">Tell us about your site and energy goals—our Adelaide team provides a customised system proposal, ROI estimate and compliance roadmap at no cost.</p>
-                        <form aria-label="Request a quote form">
+                        <form action="https://formsubmit.co/admin@adelaidesolarservices.com.au" method="POST" aria-label="Request a quote form">
+                        
+                            <!-- FormSubmit Settings -->
+                            <input type="hidden" name="_subject" value="New Solar Quote Request">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="true">
+                            <input type="hidden" name="_next" value="https://adelaidesolarservices.com.au/thank-you.html">
+                        
                             <div class="row g-3">
+                        
                                 <div class="col-12 col-sm-6">
                                     <label class="form-label visually-hidden" for="quote-name">Name</label>
-                                    <input id="quote-name" type="text" class="form-control border-0" placeholder="Full Name" style="height: 55px;" required>
+                                    <input
+                                        id="quote-name"
+                                        name="Full Name"
+                                        type="text"
+                                        class="form-control border-0"
+                                        placeholder="Full Name"
+                                        style="height:55px;"
+                                        required>
                                 </div>
+                        
                                 <div class="col-12 col-sm-6">
                                     <label class="form-label visually-hidden" for="quote-email">Email</label>
-                                    <input id="quote-email" type="email" class="form-control border-0" placeholder="Email Address" style="height: 55px;" required>
+                                    <input
+                                        id="quote-email"
+                                        name="Email"
+                                        type="email"
+                                        class="form-control border-0"
+                                        placeholder="Email Address"
+                                        style="height:55px;"
+                                        required>
                                 </div>
+                        
                                 <div class="col-12 col-sm-6">
                                     <label class="form-label visually-hidden" for="quote-phone">Phone</label>
-                                    <input id="quote-phone" type="tel" class="form-control border-0" placeholder="Phone Number" style="height: 55px;" required>
+                                    <input
+                                        id="quote-phone"
+                                        name="Phone Number"
+                                        type="tel"
+                                        class="form-control border-0"
+                                        placeholder="Phone Number"
+                                        style="height:55px;"
+                                        required>
                                 </div>
+                        
                                 <div class="col-12 col-sm-6">
                                     <label class="form-label visually-hidden" for="quote-service">Service</label>
-                                    <select id="quote-service" class="form-select border-0" style="height: 55px;" required>
-                                        <option value="" disabled selected>Select service</option>
-                                        <option value="solar">Solar PV Installation</option>
-                                        <option value="battery">Battery Storage</option>
-                                        <option value="ev">EV Charger Setup</option>
-                                        <option value="electrical">Electrical Upgrade</option>
+                                    <select
+                                        id="quote-service"
+                                        name="Requested Service"
+                                        class="form-select border-0"
+                                        style="height:55px;"
+                                        required>
+                        
+                                        <option value="" disabled selected>Select Service</option>
+                                        <option>Solar PV Installation</option>
+                                        <option>Battery Storage</option>
+                                        <option>EV Charger Installation</option>
+                                        <option>Electrical Upgrade</option>
+                        
                                     </select>
                                 </div>
+                        
                                 <div class="col-12">
-                                    <label class="form-label visually-hidden" for="quote-message">Project details</label>
-                                    <textarea id="quote-message" class="form-control border-0" rows="3" placeholder="Tell us about your project or energy challenge" required></textarea>
+                                    <label class="form-label visually-hidden" for="quote-message">Project Details</label>
+                                    <textarea
+                                        id="quote-message"
+                                        name="Project Details"
+                                        class="form-control border-0"
+                                        rows="4"
+                                        placeholder="Tell us about your project or energy challenge"
+                                        required></textarea>
                                 </div>
+                        
                                 <div class="col-12">
-                                    <button class="btn btn-success rounded-pill py-3 px-5" type="submit">Request My Quote</button>
+                                    <button class="btn btn-success rounded-pill py-3 px-5" type="submit">
+                                        Request My Quote
+                                    </button>
                                 </div>
+                        
                             </div>
                         </form>
                         <p class="mt-4 text-muted small"><i class="fas fa-lock me-1"></i>We respect your privacy. Your data is secure and never shared.</p>
