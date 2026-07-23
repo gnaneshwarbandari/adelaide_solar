@@ -742,33 +742,30 @@
                         <h6 class="text-success">Free Proposal</h6>
                         <h1 class="mb-4">Start with a No-obligation Quote</h1>
                         <p class="mb-4 pb-2 text-muted">Tell us about your site and energy goals—our Adelaide team provides a customised system proposal, ROI estimate and compliance roadmap at no cost.</p>
-                        <form action="https://formsubmit.co/admin@adelaidesolarservices.com.au" method="POST" aria-label="Request a quote form">
-                        
-                            <!-- FormSubmit Settings -->
-                            <input type="hidden" name="_subject" value="New Solar Quote Request">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_captcha" value="true">
-                            <input type="hidden" name="_next" value="https://adelaidesolarservices.com.au/thankyou.html">
-                        
+                        <form id="quoteForm" aria-label="Request a quote form">    
                             <div class="row g-3">
-                        
                                 <div class="col-12 col-sm-6">
                                     <label class="form-label visually-hidden" for="quote-name">Name</label>
                                     <input
+                                        type="text"
+                                        id="website"
+                                        name="website"
+                                        autocomplete="off"
+                                        style="display:none">
+                                    <input
                                         id="quote-name"
-                                        name="Full Name"
+                                        name="name"
                                         type="text"
                                         class="form-control border-0"
                                         placeholder="Full Name"
                                         style="height:55px;"
                                         required>
                                 </div>
-                        
                                 <div class="col-12 col-sm-6">
                                     <label class="form-label visually-hidden" for="quote-email">Email</label>
                                     <input
                                         id="quote-email"
-                                        name="Email"
+                                        name="email"
                                         type="email"
                                         class="form-control border-0"
                                         placeholder="Email Address"
@@ -780,7 +777,7 @@
                                     <label class="form-label visually-hidden" for="quote-phone">Phone</label>
                                     <input
                                         id="quote-phone"
-                                        name="Phone Number"
+                                        name="phone"
                                         type="tel"
                                         class="form-control border-0"
                                         placeholder="Phone Number"
@@ -810,7 +807,7 @@
                                     <label class="form-label visually-hidden" for="quote-message">Project Details</label>
                                     <textarea
                                         id="quote-message"
-                                        name="Project Details"
+                                        name="message"
                                         class="form-control border-0"
                                         rows="4"
                                         placeholder="Tell us about your project or energy challenge"
@@ -821,6 +818,12 @@
                                     <button class="btn btn-success rounded-pill py-3 px-5" type="submit">
                                         Request My Quote
                                     </button>
+                                </div>
+
+                                <div
+                                    id="quoteResult"
+                                    class="alert mt-3 d-none"
+                                    role="alert">
                                 </div>
                         
                             </div>
@@ -913,6 +916,46 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdmlWEtAAAAAJTSnVYo4nhXiWupAvw7LisPub1X"></script>
+    <script>
+        const SCRIPT_URL =
+                "https://script.google.com/macros/s/AKfycbzEovwkvHgPSx073Ip3yVP0dqWINYyzgbqzCMx4g_mO2FcDslhJj1vM83s4aiES2eax/exec";
+            const form = document.getElementById("quoteForm");
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                grecaptcha.ready(async function () {
+                    const token = await grecaptcha.execute(
+                        "6LdmlWEtAAAAAJTSnVYo4nhXiWupAvw7LisPub1X",
+                        {action: "quote"}
+                    );
+                    const body = {
+                        name: document.getElementById("quote-name").value,
+                        email: document.getElementById("quote-email").value,
+                        phone: document.getElementById("quote-phone").value,
+                        service: document.getElementById("quote-service").value,
+                        message: document.getElementById("quote-message").value,
+                        website: document.getElementById("website").value,
+                        recaptchaToken: token
+                    };
+                    const response = await fetch(SCRIPT_URL, {
+                        method: "POST",
+                        body: JSON.stringify(body)
+                    });
+                    const result = await response.json();
+                    const alert = document.getElementById("quoteResult");
+                    alert.classList.remove("d-none");
+                    if (result.success) {
+                        alert.className = "alert alert-success mt-3";
+                        alert.innerHTML =
+                            "✔ Thank you! Your request has been submitted successfully.";
+                        form.reset();
+                    } else {
+                        alert.className = "alert alert-danger mt-3";
+                        alert.innerHTML = result.message;
+                    }
+                });
+            });  
+    </script>   
 </body>
 
 </html>
