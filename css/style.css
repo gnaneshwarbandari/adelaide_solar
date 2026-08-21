@@ -141,30 +141,43 @@ body {
 /* 5. Hero Section */
 .hero {
     position: relative;
-    background: linear-gradient(160deg, rgba(46, 204, 113, 0.95), rgba(10, 37, 64, 0.90));
+    /* Move gradient to background-color fallback */
+    background-color: #0a2540; 
     color: #fff;
     min-height: calc(100vh - 120px);
     display: flex;
     align-items: center;
     padding: 4rem 0;
+    overflow: hidden; /* Fixes overflow issues from filter: blur() */
 }
 
-.hero::after {
+.hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1600&q=80');
+    background-image: url('../img/hero-bg.jpg'); /* Download image locally (replaces Unsplash URL) */
     background-size: cover;
     background-position: center;
     opacity: 0.32;
     filter: blur(1px);
-    z-index: 0;
+    z-index: 1; /* Set to 1 */
 }
 
+/* Gradient Overlay sitting above the image */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(46, 204, 113, 0.90), rgba(10, 37, 64, 0.95));
+    z-index: 2; /* Set to 2 to sit over the background image */
+}
+
+/* Ensure content stays on top of both layers */
 .hero .content,
-.hero .illustration {
+.hero .illustration,
+.hero .container {
     position: relative;
-    z-index: 1;
+    z-index: 3; /* Elevated above pseudo-elements */
 }
 
 .hero .btn-primary,
