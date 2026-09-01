@@ -113,80 +113,793 @@
     <!-- 4. Core Services -->
     <section id="services" class="container-xxl py-5">
         <div class="container">
+
+            <!-- Section Heading -->
             <div class="text-center mb-5">
                 <div class="section-title">
                     <h6>Our Services</h6>
                 </div>
                 <h2 class="fw-bold">Innovative Solar, Battery & Electrical Solutions</h2>
-                <p class="text-muted">Broad capabilities engineered for residential, commercial, and industrial clients
-                    across SA.</p>
+                <p class="text-muted">
+                    Broad capabilities engineered for residential, commercial, and industrial clients across South
+                    Australia.
+                </p>
             </div>
-            <div class="row g-4 mb-4">
-                <div class="col-12 col-lg-4">
-                    <article class="card-modern p-4 h-100" aria-label="Solar Power Systems">
-                        <div class="icon"><i class="fas fa-solar-panel"></i></div>
-                        <h5 class="mt-3">Solar Power Systems</h5>
-                        <p class="text-muted">High-efficiency systems designed and deployed for residential, commercial
-                            & industrial facilities.</p>
-                        <a href="#" class="text-success fw-semibold">Learn More <i
-                                class="fas fa-arrow-right ms-1"></i></a>
-                    </article>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <article class="card-modern p-4 h-100" aria-label="Battery Energy Storage">
-                        <div class="icon"><i class="fas fa-battery-full"></i></div>
-                        <h5 class="mt-3">Battery Energy Storage</h5>
-                        <p class="text-muted">Advanced residential batteries and commercial BESS for load shifting,
-                            back-up power, and demand management.</p>
-                        <a href="#" class="text-success fw-semibold">Learn More <i
-                                class="fas fa-arrow-right ms-1"></i></a>
-                    </article>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <article class="card-modern p-4 h-100" aria-label="Commercial & Industrial Energy Solutions">
-                        <div class="icon"><i class="fas fa-industry"></i></div>
-                        <h5 class="mt-3">Commercial & Industrial Energy</h5>
-                        <p class="text-muted">Comprehensive solutions combining generation, demand analysis, and peak
-                            shaving strategy.</p>
-                        <a href="#" class="text-success fw-semibold">Learn More <i
-                                class="fas fa-arrow-right ms-1"></i></a>
-                    </article>
-                </div>
-            </div>
+
+            <!-- Service Cards -->
             <div class="row g-4">
-                <div class="col-12 col-lg-4">
-                    <article class="card-modern p-4 h-100" aria-label="Electrical Infrastructure">
-                        <div class="icon"><i class="fas fa-plug"></i></div>
+
+                <!-- 1. Solar Power Systems -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card-modern p-4 h-100 d-flex flex-column" aria-label="Solar Power Systems">
+                        <div class="icon">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+
+                        <h5 class="mt-3">Solar Power Systems</h5>
+
+                        <p class="text-muted">
+                            High-efficiency systems designed and deployed for residential,
+                            commercial & industrial facilities.
+                        </p>
+
+                        <div class="mt-auto pt-2">
+                            <button type="button" class="btn btn-link text-success fw-semibold text-decoration-none p-0"
+                                data-bs-toggle="modal" data-bs-target="#solarPowerModal">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 2. Battery Energy Storage -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card-modern p-4 h-100 d-flex flex-column" aria-label="Battery Energy Storage">
+                        <div class="icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+
+                        <h5 class="mt-3">Battery Energy Storage</h5>
+
+                        <p class="text-muted">
+                            Advanced residential batteries and commercial BESS for load
+                            shifting, back-up power, and demand management.
+                        </p>
+
+                        <div class="mt-auto pt-2">
+                            <button type="button" class="btn btn-link text-success fw-semibold text-decoration-none p-0"
+                                data-bs-toggle="modal" data-bs-target="#batteryStorageModal">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 3. Commercial & Industrial Energy -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card-modern p-4 h-100 d-flex flex-column"
+                        aria-label="Commercial and Industrial Energy Solutions">
+
+                        <div class="icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+
+                        <h5 class="mt-3">Commercial & Industrial Energy</h5>
+
+                        <p class="text-muted">
+                            Comprehensive solutions combining generation, demand analysis,
+                            and peak shaving strategy.
+                        </p>
+
+                        <div class="mt-auto pt-2">
+                            <button type="button" class="btn btn-link text-success fw-semibold text-decoration-none p-0"
+                                data-bs-toggle="modal" data-bs-target="#commercialEnergyModal">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 4. Electrical Infrastructure -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card-modern p-4 h-100 d-flex flex-column" aria-label="Electrical Infrastructure">
+
+                        <div class="icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+
                         <h5 class="mt-3">Electrical Infrastructure</h5>
-                        <p class="text-muted">Switchboard upgrades, high-capacity wiring, safety compliance, and
-                            generator integration.</p>
-                        <a href="#" class="text-success fw-semibold">Learn More <i
-                                class="fas fa-arrow-right ms-1"></i></a>
+
+                        <p class="text-muted">
+                            Switchboard upgrades, high-capacity wiring, safety compliance,
+                            and generator integration.
+                        </p>
+
+                        <div class="mt-auto pt-2">
+                            <button type="button" class="btn btn-link text-success fw-semibold text-decoration-none p-0"
+                                data-bs-toggle="modal" data-bs-target="#electricalInfrastructureModal">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </button>
+                        </div>
                     </article>
                 </div>
-                <div class="col-12 col-lg-4">
-                    <article class="card-modern p-4 h-100" aria-label="EV Charging Infrastructure">
-                        <div class="icon"><i class="fas fa-charging-station"></i></div>
+
+                <!-- 5. EV Charging Infrastructure -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card-modern p-4 h-100 d-flex flex-column" aria-label="EV Charging Infrastructure">
+
+                        <div class="icon">
+                            <i class="fas fa-charging-station"></i>
+                        </div>
+
                         <h5 class="mt-3">EV Charging Infrastructure</h5>
-                        <p class="text-muted">Fleet and commercial EV charger installations with integrated dynamic load
-                            management.</p>
-                        <a href="#" class="text-success fw-semibold">Learn More <i
-                                class="fas fa-arrow-right ms-1"></i></a>
+
+                        <p class="text-muted">
+                            Fleet and commercial EV charger installations with integrated
+                            dynamic load management.
+                        </p>
+
+                        <div class="mt-auto pt-2">
+                            <button type="button" class="btn btn-link text-success fw-semibold text-decoration-none p-0"
+                                data-bs-toggle="modal" data-bs-target="#evChargingModal">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </button>
+                        </div>
                     </article>
                 </div>
-                <div class="col-12 col-lg-4">
-                    <article class="card-modern p-4 h-100" aria-label="Off-Grid & Hybrid Power Systems">
-                        <div class="icon"><i class="fas fa-power-off"></i></div>
+
+                <!-- 6. Off-Grid & Hybrid Power -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card-modern p-4 h-100 d-flex flex-column"
+                        aria-label="Off-Grid and Hybrid Power Systems">
+
+                        <div class="icon">
+                            <i class="fas fa-power-off"></i>
+                        </div>
+
                         <h5 class="mt-3">Off-Grid & Hybrid Power</h5>
-                        <p class="text-muted">Autonomous solar, battery, and generator systems built for remote, rural,
-                            and industrial operations.</p>
-                        <a href="#" class="text-success fw-semibold">Learn More <i
-                                class="fas fa-arrow-right ms-1"></i></a>
+
+                        <p class="text-muted">
+                            Autonomous solar, battery, and generator systems built for
+                            remote, rural, and industrial operations.
+                        </p>
+
+                        <div class="mt-auto pt-2">
+                            <button type="button" class="btn btn-link text-success fw-semibold text-decoration-none p-0"
+                                data-bs-toggle="modal" data-bs-target="#offGridModal">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </button>
+                        </div>
                     </article>
                 </div>
+
             </div>
         </div>
     </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SERVICE MODALS -->
+    <!-- ========================================================= -->
+
+    <!-- 1. Solar Power Systems Modal -->
+    <div class="modal fade" id="solarPowerModal" tabindex="-1" aria-labelledby="solarPowerModalLabel"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+
+                <div class="modal-header">
+                    <div>
+                        <span class="text-success fw-semibold small">
+                            SOLAR POWER SYSTEMS
+                        </span>
+                        <h4 class="modal-title fw-bold mt-1" id="solarPowerModalLabel">
+                            Solar Power Systems
+                        </h4>
+                    </div>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4 p-lg-5">
+
+                    <p class="lead">
+                        Efficient solar PV systems designed around your property's
+                        energy consumption, available roof space and future energy needs.
+                    </p>
+
+                    <p class="text-muted">
+                        We design and deploy solar power systems for homes, commercial
+                        facilities and industrial sites. Each system is assessed against
+                        actual electricity consumption and site conditions to help maximise
+                        energy generation and self-consumption.
+                    </p>
+
+                    <h6 class="fw-bold mt-4 mb-3">Key Benefits</h6>
+
+                    <div class="row g-3">
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-sun text-success me-2"></i>
+                                <strong>Reduce Energy Costs</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Generate your own electricity and reduce reliance on
+                                    grid-supplied power.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-chart-line text-success me-2"></i>
+                                <strong>Optimised System Design</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Systems designed around actual consumption and site
+                                    requirements.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-building text-success me-2"></i>
+                                <strong>Commercial & Industrial</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Scalable solutions for larger facilities and
+                                    operational energy requirements.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-battery-full text-success me-2"></i>
+                                <strong>Battery Ready</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Solar systems can be integrated with battery storage
+                                    for greater energy independence.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <h6 class="fw-bold mt-4 mb-3">Suitable For</h6>
+
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-success-subtle text-success">Homes</span>
+                        <span class="badge bg-success-subtle text-success">Offices</span>
+                        <span class="badge bg-success-subtle text-success">Warehouses</span>
+                        <span class="badge bg-success-subtle text-success">Manufacturing</span>
+                        <span class="badge bg-success-subtle text-success">Industrial Facilities</span>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer border-0 px-4 px-lg-5 pb-4">
+                    <a href="#quote" class="btn btn-success rounded-pill px-4" data-bs-dismiss="modal">
+                        Request a Solar Assessment
+                    </a>
+
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 2. Battery Energy Storage Modal -->
+    <div class="modal fade" id="batteryStorageModal" tabindex="-1" aria-labelledby="batteryStorageModalLabel"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+
+                <div class="modal-header">
+                    <div>
+                        <span class="text-success fw-semibold small">
+                            BATTERY ENERGY STORAGE
+                        </span>
+                        <h4 class="modal-title fw-bold mt-1" id="batteryStorageModalLabel">
+                            Battery Energy Storage
+                        </h4>
+                    </div>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4 p-lg-5">
+
+                    <p class="lead">
+                        Smart battery storage solutions designed to store energy when
+                        it is available and use it when it matters most.
+                    </p>
+
+                    <p class="text-muted">
+                        Battery Energy Storage Systems (BESS) can be integrated with
+                        solar PV or existing electrical infrastructure to improve
+                        energy utilisation, provide backup power and manage demand.
+                    </p>
+
+                    <h6 class="fw-bold mt-4 mb-3">Key Benefits</h6>
+
+                    <div class="row g-3">
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-bolt text-success me-2"></i>
+                                <strong>Peak Shaving</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Discharge stored energy during high-demand periods
+                                    to help manage peak loads.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-clock text-success me-2"></i>
+                                <strong>Load Shifting</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Store energy and use it during higher-cost or
+                                    high-demand periods.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-shield-alt text-success me-2"></i>
+                                <strong>Backup Power</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Provide backup energy for selected loads during
+                                    suitable grid interruptions.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-solar-panel text-success me-2"></i>
+                                <strong>Solar Integration</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Store excess solar generation for use later in
+                                    the day or evening.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer border-0 px-4 px-lg-5 pb-4">
+
+                    <a href="#quote" class="btn btn-success rounded-pill px-4" data-bs-dismiss="modal">
+                        Discuss Battery Storage
+                    </a>
+
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">
+                        Close
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 3. Commercial & Industrial Energy Modal -->
+    <div class="modal fade" id="commercialEnergyModal" tabindex="-1" aria-labelledby="commercialEnergyModalLabel"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+
+                <div class="modal-header">
+                    <div>
+                        <span class="text-success fw-semibold small">
+                            COMMERCIAL & INDUSTRIAL
+                        </span>
+                        <h4 class="modal-title fw-bold mt-1" id="commercialEnergyModalLabel">
+                            Commercial & Industrial Energy Solutions
+                        </h4>
+                    </div>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4 p-lg-5">
+
+                    <p class="lead">
+                        Integrated energy infrastructure designed around the operational
+                        requirements of your business.
+                    </p>
+
+                    <p class="text-muted">
+                        We combine solar generation, battery storage, energy analysis,
+                        demand management and electrical infrastructure to develop
+                        practical solutions for commercial and industrial facilities.
+                    </p>
+
+                    <h6 class="fw-bold mt-4 mb-3">Key Applications</h6>
+
+                    <div class="row g-3">
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-solar-panel text-success me-2"></i>
+                                <strong>Commercial Solar</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Solar PV designed to offset daytime business
+                                    electricity consumption.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-battery-full text-success me-2"></i>
+                                <strong>Commercial BESS</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Battery storage for peak management, energy
+                                    shifting and suitable backup applications.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-chart-bar text-success me-2"></i>
+                                <strong>Energy Analysis</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Analysis of electricity bills, interval data,
+                                    load profiles and demand patterns.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-industry text-success me-2"></i>
+                                <strong>Industrial Energy Infrastructure</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Scalable energy and electrical infrastructure
+                                    for operational facilities.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer border-0 px-4 px-lg-5 pb-4">
+
+                    <a href="#quote" class="btn btn-success rounded-pill px-4" data-bs-dismiss="modal">
+                        Request Commercial Assessment
+                    </a>
+
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">
+                        Close
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 4. Electrical Infrastructure Modal -->
+    <div class="modal fade" id="electricalInfrastructureModal" tabindex="-1"
+        aria-labelledby="electricalInfrastructureModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+
+                <div class="modal-header">
+                    <div>
+                        <span class="text-success fw-semibold small">
+                            ELECTRICAL INFRASTRUCTURE
+                        </span>
+                        <h4 class="modal-title fw-bold mt-1" id="electricalInfrastructureModalLabel">
+                            Electrical Infrastructure
+                        </h4>
+                    </div>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4 p-lg-5">
+
+                    <p class="lead">
+                        Reliable electrical infrastructure supporting solar,
+                        batteries, EV charging and commercial operations.
+                    </p>
+
+                    <p class="text-muted">
+                        Our electrical infrastructure services cover upgrades and
+                        integration work required to support modern energy systems
+                        and evolving site requirements.
+                    </p>
+
+                    <h6 class="fw-bold mt-4 mb-3">Key Services</h6>
+
+                    <div class="row g-3">
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-server text-success me-2"></i>
+                                <strong>Switchboard Upgrades</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Electrical upgrades designed around increased
+                                    site capacity and new energy equipment.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-bolt text-success me-2"></i>
+                                <strong>Electrical Capacity</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Infrastructure planning for higher electrical
+                                    loads and future expansion.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-shield-alt text-success me-2"></i>
+                                <strong>Safety & Compliance</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Electrical works planned with applicable
+                                    safety and compliance requirements in mind.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-cogs text-success me-2"></i>
+                                <strong>System Integration</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Integration of solar, batteries, generators
+                                    and other electrical assets.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer border-0 px-4 px-lg-5 pb-4">
+
+                    <a href="#quote" class="btn btn-success rounded-pill px-4" data-bs-dismiss="modal">
+                        Discuss Electrical Requirements
+                    </a>
+
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">
+                        Close
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 5. EV Charging Infrastructure Modal -->
+    <div class="modal fade" id="evChargingModal" tabindex="-1" aria-labelledby="evChargingModalLabel"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+
+                <div class="modal-header">
+                    <div>
+                        <span class="text-success fw-semibold small">
+                            EV CHARGING
+                        </span>
+                        <h4 class="modal-title fw-bold mt-1" id="evChargingModalLabel">
+                            EV Charging Infrastructure
+                        </h4>
+                    </div>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4 p-lg-5">
+
+                    <p class="lead">
+                        Smart EV charging infrastructure for homes, businesses,
+                        commercial properties and vehicle fleets.
+                    </p>
+
+                    <p class="text-muted">
+                        EV charging installations can be designed alongside existing
+                        electrical infrastructure, solar generation and battery
+                        storage to help manage available site capacity.
+                    </p>
+
+                    <h6 class="fw-bold mt-4 mb-3">Key Applications</h6>
+
+                    <div class="row g-3">
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-home text-success me-2"></i>
+                                <strong>Residential Charging</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Convenient home charging solutions for electric
+                                    vehicle owners.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-building text-success me-2"></i>
+                                <strong>Commercial Charging</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Charging infrastructure for workplaces,
+                                    commercial properties and facilities.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-truck text-success me-2"></i>
+                                <strong>Fleet Charging</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Charging infrastructure planned around fleet
+                                    operations and available electrical capacity.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-sliders-h text-success me-2"></i>
+                                <strong>Load Management</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Smart charging strategies to help manage
+                                    electrical demand.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer border-0 px-4 px-lg-5 pb-4">
+
+                    <a href="#quote" class="btn btn-success rounded-pill px-4" data-bs-dismiss="modal">
+                        Discuss EV Charging
+                    </a>
+
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">
+                        Close
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 6. Off-Grid & Hybrid Power Modal -->
+    <div class="modal fade" id="offGridModal" tabindex="-1" aria-labelledby="offGridModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+
+                <div class="modal-header">
+                    <div>
+                        <span class="text-success fw-semibold small">
+                            OFF-GRID & HYBRID POWER
+                        </span>
+                        <h4 class="modal-title fw-bold mt-1" id="offGridModalLabel">
+                            Off-Grid & Hybrid Power Systems
+                        </h4>
+                    </div>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4 p-lg-5">
+
+                    <p class="lead">
+                        Reliable autonomous power systems combining solar,
+                        batteries and generator technologies.
+                    </p>
+
+                    <p class="text-muted">
+                        Off-grid and hybrid systems are designed for locations where
+                        grid power is unavailable, unreliable or where greater energy
+                        independence is required.
+                    </p>
+
+                    <h6 class="fw-bold mt-4 mb-3">Key Applications</h6>
+
+                    <div class="row g-3">
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-map-marker-alt text-success me-2"></i>
+                                <strong>Remote & Rural Sites</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Autonomous energy systems for rural and remote
+                                    properties.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-solar-panel text-success me-2"></i>
+                                <strong>Solar Generation</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Solar PV provides the primary renewable energy
+                                    source where suitable.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-battery-full text-success me-2"></i>
+                                <strong>Battery Storage</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Energy storage helps maintain power availability
+                                    when solar generation is limited.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-light rounded-3 h-100">
+                                <i class="fas fa-cogs text-success me-2"></i>
+                                <strong>Generator Integration</strong>
+                                <p class="small text-muted mb-0 mt-2">
+                                    Hybrid systems can incorporate generators as
+                                    additional backup generation.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer border-0 px-4 px-lg-5 pb-4">
+
+                    <a href="#quote" class="btn btn-success rounded-pill px-4" data-bs-dismiss="modal">
+                        Discuss Off-Grid Power
+                    </a>
+
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">
+                        Close
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- 5. Commercial & Industrial Feature Section -->
     <section id="commercial" class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
@@ -400,33 +1113,24 @@
 
             <div class="partner-logo-grid">
                 <div class="partner-logo-card" title="SolarX">
-                    <img class="logo-solarx"
-                        src="img/trusted_brands/solarx_solar.png"
-                        alt="SolarX" loading="lazy" decoding="async">
+                    <img class="logo-solarx" src="img/trusted_brands/solarx_solar.png" alt="SolarX" loading="lazy"
+                        decoding="async">
                 </div>
 
                 <div class="partner-logo-card" title="Sungrow">
-                    <img
-                        src="img/trusted_brands/sungrow.png"
-                        alt="Sungrow" loading="lazy" decoding="async">
+                    <img src="img/trusted_brands/sungrow.png" alt="Sungrow" loading="lazy" decoding="async">
                 </div>
 
                 <div class="partner-logo-card" title="Sigenergy">
-                    <img
-                        src="img/trusted_brands/sigenergy_solar.png"
-                        alt="Sigenergy" loading="lazy" decoding="async">
+                    <img src="img/trusted_brands/sigenergy_solar.png" alt="Sigenergy" loading="lazy" decoding="async">
                 </div>
 
                 <div class="partner-logo-card" title="Deye">
-                    <img
-                        src="img/trusted_brands/deye_solar.jpg"
-                        alt="Deye" loading="lazy" decoding="async">
+                    <img src="img/trusted_brands/deye_solar.jpg" alt="Deye" loading="lazy" decoding="async">
                 </div>
 
                 <div class="partner-logo-card" title="GoodWe">
-                    <img
-                        src="img/trusted_brands/goodwe.png"
-                        alt="GoodWe" loading="lazy" decoding="async">
+                    <img src="img/trusted_brands/goodwe.png" alt="GoodWe" loading="lazy" decoding="async">
                 </div>
 
                 <div class="partner-logo-card" title="Victron Energy Blue Power">
@@ -436,15 +1140,12 @@
                 </div>
 
                 <div class="partner-logo-card" title="LONGi Solar">
-                    <img class="logo-longi"
-                        src="img/trusted_brands/longi_solar.png"
-                        alt="LONGi Solar" loading="lazy" decoding="async">
+                    <img class="logo-longi" src="img/trusted_brands/longi_solar.png" alt="LONGi Solar" loading="lazy"
+                        decoding="async">
                 </div>
 
                 <div class="partner-logo-card" title="JinkoSolar">
-                    <img
-                        src="img/trusted_brands/jinko_solar.jpg"
-                        alt="JinkoSolar" loading="lazy" decoding="async">
+                    <img src="img/trusted_brands/jinko_solar.jpg" alt="JinkoSolar" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>

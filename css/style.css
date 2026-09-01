@@ -404,6 +404,114 @@ body {
     }
 }
 
+/* Service modal */
+.modal-content {
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #edf0f2;
+}
+
+.modal-body {
+    line-height: 1.7;
+}
+
+.modal-body .lead {
+    font-weight: 500;
+    color: #212529;
+}
+
+.modal-body .bg-light {
+    border: 1px solid #edf0f2;
+}
+
+.modal-footer {
+    background: #ffffff;
+}
+
+/* Make close button highly visible */
+.modal-header .btn-close {
+    width: 42px;
+    height: 42px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #f1f3f5;
+    opacity: 1;
+    flex-shrink: 0;
+}
+
+.modal-header .btn-close:hover {
+    background-color: #e2e6ea;
+}
+
+/* Mobile */
+@media (max-width: 575.98px) {
+
+    .modal {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .modal-dialog {
+        margin: 0.5rem auto;
+        max-width: calc(100% - 16px);
+    }
+
+    .modal-content {
+        border-radius: 18px !important;
+    }
+
+    .modal-header {
+        padding: 1rem 1rem;
+        align-items: flex-start;
+    }
+
+    .modal-header .btn-close {
+        width: 38px;
+        height: 38px;
+        padding: 9px;
+        margin-left: 10px;
+    }
+
+    .modal-body {
+        padding: 1.25rem !important;
+        font-size: 0.95rem;
+    }
+
+    .modal-body .lead {
+        font-size: 1.05rem;
+    }
+
+    .modal-footer {
+        padding: 1rem !important;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .modal-footer .btn {
+        width: 100%;
+        margin: 0 !important;
+    }
+}
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .modal-dialog {
+        max-width: 90%;
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .modal-dialog {
+        max-width: 850px;
+    }
+}
+
 /* 7. Footer */
 .footer {
     background: #0a2540;
