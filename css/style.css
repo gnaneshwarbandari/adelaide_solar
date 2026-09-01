@@ -31,9 +31,17 @@ body {
 }
 
 /* Utilities */
-.fw-medium { font-weight: 500 !important; }
-.fw-bold   { font-weight: 700 !important; }
-.fw-black  { font-weight: 900 !important; }
+.fw-medium {
+    font-weight: 500 !important;
+}
+
+.fw-bold {
+    font-weight: 700 !important;
+}
+
+.fw-black {
+    font-weight: 900 !important;
+}
 
 /* 3. Global Components (Buttons, Spinner, Back to Top) */
 .btn {
@@ -46,9 +54,32 @@ body {
     color: #FFFFFF;
 }
 
-.btn-square    { width: 38px; height: 38px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
-.btn-sm-square { width: 32px; height: 32px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
-.btn-lg-square { width: 48px; height: 48px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+.btn-square {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .back-to-top {
     position: fixed;
@@ -142,25 +173,28 @@ body {
 .hero {
     position: relative;
     /* Move gradient to background-color fallback */
-    background-color: #0a2540; 
+    background-color: #0a2540;
     color: #fff;
     min-height: calc(100vh - 120px);
     display: flex;
     align-items: center;
     padding: 4rem 0;
-    overflow: hidden; /* Fixes overflow issues from filter: blur() */
+    overflow: hidden;
+    /* Fixes overflow issues from filter: blur() */
 }
 
 .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('../img/hero-bg.jpg'); /* Download image locally (replaces Unsplash URL) */
+    background-image: url('../img/hero-bg.jpg');
+    /* Download image locally (replaces Unsplash URL) */
     background-size: cover;
     background-position: center;
     opacity: 0.32;
     filter: blur(1px);
-    z-index: 1; /* Set to 1 */
+    z-index: 1;
+    /* Set to 1 */
 }
 
 /* Gradient Overlay sitting above the image */
@@ -169,7 +203,8 @@ body {
     position: absolute;
     inset: 0;
     background: linear-gradient(160deg, rgba(46, 204, 113, 0.90), rgba(10, 37, 64, 0.95));
-    z-index: 2; /* Set to 2 to sit over the background image */
+    z-index: 2;
+    /* Set to 2 to sit over the background image */
 }
 
 /* Ensure content stays on top of both layers */
@@ -177,7 +212,8 @@ body {
 .hero .illustration,
 .hero .container {
     position: relative;
-    z-index: 3; /* Elevated above pseudo-elements */
+    z-index: 3;
+    /* Elevated above pseudo-elements */
 }
 
 .hero .btn-primary,
@@ -220,7 +256,7 @@ body {
     font-size: 1.3rem;
 }
 
-.service-item, 
+.service-item,
 .team-item {
     box-shadow: 0 0 45px rgba(0, 0, 0, .08);
 }
@@ -282,6 +318,90 @@ body {
     color: #fff;
     border-radius: 18px;
     box-shadow: 0 16px 26px rgba(10, 37, 64, 0.25);
+}
+
+/* Trusted Brands */
+.technology-partners {
+    background: #fff;
+}
+
+.partner-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+.partner-logo-card {
+    min-width: 0;
+    height: 130px;
+    padding: 18px 24px;
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.partner-logo-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(25, 135, 84, .25);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .08);
+}
+
+.partner-logo-card img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 82px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.partner-logo-card .logo-solarx {
+    max-width: 190px;
+}
+
+.partner-logo-card .logo-victron {
+    max-width: 230px;
+}
+
+.partner-logo-card .logo-longi {
+    max-width: 220px;
+}
+
+@media (max-width:991.98px) {
+    .partner-logo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .partner-logo-card {
+        height: 120px;
+        padding: 16px 20px;
+    }
+}
+
+@media (max-width:575.98px) {
+    .partner-logo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .partner-logo-card {
+        height: 105px;
+        padding: 12px 10px;
+        border-radius: 12px;
+    }
+
+    .partner-logo-card img {
+        max-height: 62px;
+        max-width: 100%;
+    }
 }
 
 /* 7. Footer */
@@ -346,13 +466,13 @@ body {
 
 /* Tablet & Mobile Navigation Collapse */
 @media (max-width: 991.98px) {
-    .navbar .navbar-nav .nav-link { 
-        margin-right: 0; 
-        padding: 10px 0; 
+    .navbar .navbar-nav .nav-link {
+        margin-right: 0;
+        padding: 10px 0;
     }
-    
-    .navbar .navbar-nav { 
-        border-top: 1px solid #EEEEEE; 
+
+    .navbar .navbar-nav {
+        border-top: 1px solid #EEEEEE;
     }
 }
 
@@ -376,17 +496,35 @@ body {
 
 /* Split-Layout Section Padding Utilities */
 @media (min-width: 992px) {
-    .container.split-section { max-width: 100% !important; }
-    .split-text-right { padding-right: calc(((100% - 960px) / 2) + .75rem); }
-    .split-text-left  { padding-left: calc(((100% - 960px) / 2) + .75rem); }
+    .container.split-section {
+        max-width: 100% !important;
+    }
+
+    .split-text-right {
+        padding-right: calc(((100% - 960px) / 2) + .75rem);
+    }
+
+    .split-text-left {
+        padding-left: calc(((100% - 960px) / 2) + .75rem);
+    }
 }
 
 @media (min-width: 1200px) {
-    .split-text-right { padding-right: calc(((100% - 1140px) / 2) + .75rem); }
-    .split-text-left  { padding-left: calc(((100% - 1140px) / 2) + .75rem); }
+    .split-text-right {
+        padding-right: calc(((100% - 1140px) / 2) + .75rem);
+    }
+
+    .split-text-left {
+        padding-left: calc(((100% - 1140px) / 2) + .75rem);
+    }
 }
 
 @media (min-width: 1400px) {
-    .split-text-right { padding-right: calc(((100% - 1320px) / 2) + .75rem); }
-    .split-text-left  { padding-left: calc(((100% - 1320px) / 2) + .75rem); }
+    .split-text-right {
+        padding-right: calc(((100% - 1320px) / 2) + .75rem);
+    }
+
+    .split-text-left {
+        padding-left: calc(((100% - 1320px) / 2) + .75rem);
+    }
 }
