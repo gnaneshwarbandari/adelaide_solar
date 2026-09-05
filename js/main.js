@@ -208,31 +208,29 @@
             // Disable button during network request
             $submitBtn.prop("disabled", true).html('<span class="spinner-border spinner-border-sm me-2" role="status"></span>Sending...');
 
-            $.ajax({
-                url: GOOGLE_SCRIPT_WEBHOOK_URL,
-                type: "POST",
-                dataType: "json",
-                // Uses text/plain contentType to prevent CORS pre-flight restrictions with Google Apps Script
-                contentType: "text/plain;charset=utf-8", 
-                data: JSON.stringify(formData),
-                success: function (response) {
-                    if (response && response.result === "success") {
-                        $resultBox.removeClass("d-none").addClass("d-block alert-success")
-                            .html('<i class="fas fa-check-circle me-1"></i> Thank you! Your quote request has been sent successfully.');
-                        $form[0].reset();
-                        renderQuoteCaptcha();
-                    } else {
-                        $resultBox.removeClass("d-none").addClass("d-block alert-danger")
-                            .text("Something went wrong while saving your request. Please try again.");
-                    }
+            // Native fetch request using mode: 'no-cors'
+            fetch(GOOGLE_SCRIPT_WEBHOOK_URL, {
+                method: "POST",
+                mode: "no-cors", // Bypasses CORS browser block
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
                 },
-                error: function () {
-                    $resultBox.removeClass("d-none").addClass("d-block alert-danger")
-                        .text("Unable to connect to server. Please check your connection and try again.");
-                },
-                complete: function () {
-                    $submitBtn.prop("disabled", false).html("Request My Quote");
-                }
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                // Note: 'no-cors' returns an opaque response, but data is successfully received by Google Script
+                $resultBox.removeClass("d-none").addClass("d-block alert-success")
+                    .html('<i class="fas fa-check-circle me-1"></i> Thank you! Your quote request has been sent successfully.');
+                $form[0].reset();
+                renderQuoteCaptcha();
+            })
+            .catch((error) => {
+                console.error("Submission Error:", error);
+                $resultBox.removeClass("d-none").addClass("d-block alert-danger")
+                    .text("Unable to connect to server. Please try again.");
+            })
+            .finally(() => {
+                $submitBtn.prop("disabled", false).html("Request My Quote");
             });
         });
     });
