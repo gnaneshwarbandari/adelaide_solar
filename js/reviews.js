@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 reviewTextWrapper.appendChild(reviewText);
 
                 // Read more
-                if (reviewContent.length > 280) {
+                if (reviewContent.length > 6) {
 
                     reviewText.classList.add(
                         "review-truncated"
