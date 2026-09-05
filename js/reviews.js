@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzyWxvoqMNcyRSImA4STSVb1dpLVWiBH0ErRJuEhlgypU6xlgcaN1vlqxNAaUKo5CT7ZQ/exec";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzxj9PvACzex6BYf2b3y17DAeswS-z77HWuMXm12dOgHVHpXeYyzo17yfo7kCO3vBYFdw/exec";
 
     const reviewsContainer = document.getElementById("reviews-container");
     const ratingValue = document.getElementById("google-rating-value");
