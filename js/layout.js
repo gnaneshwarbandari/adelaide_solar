@@ -44,8 +44,8 @@ class SiteHeader extends HTMLElement {
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#google-reviews">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#footer-data">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
                 <div class="d-flex align-items-center mt-3 mt-lg-0 ms-lg-4">
@@ -70,7 +70,7 @@ class SiteHeader extends HTMLElement {
 class SiteFooter extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
-        <footer class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <footer id="footer-data" class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
