@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Limit total reviews to 5 
             const reviews = (data.reviews || []).slice(0, 5);
 
-            if (!data.reviews || data.reviews.length === 0) {
+            if (!data.reviews || reviews.length === 0) {
                 reviewsContainer.innerHTML = `
                     <div class="col-12 text-center">
                         <p class="text-muted">
@@ -37,12 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // Calculate average rating from returned reviews
-            const totalRating = data.reviews.reduce(
+            const totalRating = reviews.reduce(
                 (sum, review) => sum + (Number(review.rating) || 0),
                 0
             );
 
-            const averageRating = totalRating / data.reviews.length;
+            const averageRating = totalRating / reviews.length;
 
             if (ratingValue) {
                 ratingValue.textContent = averageRating.toFixed(1);
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // Create review cards
-            data.reviews.forEach(review => {
+            reviews.forEach(review => {
 
                 const col = document.createElement("div");
                 col.className = "col-md-6 col-lg-4";
