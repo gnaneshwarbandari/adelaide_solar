@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             reviewsContainer.innerHTML = "";
 
+            // Limit total reviews to 5 
+            const reviews = (data.reviews || []).slice(0, 5);
+
             if (!data.reviews || data.reviews.length === 0) {
                 reviewsContainer.innerHTML = `
                     <div class="col-12 text-center">
@@ -136,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 reviewTextWrapper.appendChild(reviewText);
 
                 // Read more
-                if (reviewContent.length > 6) {
+                if (reviewContent.length > 200) {
 
                     reviewText.classList.add(
                         "review-truncated"
