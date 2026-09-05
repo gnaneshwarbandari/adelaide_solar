@@ -22,10 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             reviewsContainer.innerHTML = "";
 
-            // Limit total reviews to 5 
+            // Limit total reviews to 5
             const reviews = (data.reviews || []).slice(0, 5);
 
-            if (!data.reviews || reviews.length === 0) {
+            if (reviews.length === 0) {
                 reviewsContainer.innerHTML = `
                     <div class="col-12 text-center">
                         <p class="text-muted">
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Calculate average rating from returned reviews
+            // Calculate average rating from the 5 displayed reviews
             const totalRating = reviews.reduce(
                 (sum, review) => sum + (Number(review.rating) || 0),
                 0
