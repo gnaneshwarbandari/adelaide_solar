@@ -88,7 +88,9 @@
                         <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Full commercial and
                             industrial compliance and safety engineering</li>
                     </ul>
-                    <a href="https://adelaidesolarservices.com.au/#contact" onclick="closeModalAndOpenContact(event, this.href);" class="btn btn-success rounded-pill py-3 px-5">About Us</a>
+                    <a href="https://adelaidesolarservices.com.au/#contact"
+                        onclick="closeModalAndOpenContact(event, this.href);"
+                        class="btn btn-success rounded-pill py-3 px-5">About Us</a>
                 </div>
 
                 <!-- Right Images Section (30% on desktop: col-lg-4, 100% on mobile: col-12) -->
@@ -927,7 +929,9 @@
                             <a href="#" class="btn btn-outline-primary btn-sm">Electrical Infrastructure</a>
                         </div>
 
-                        <a href="https://adelaidesolarservices.com.au/#contact" onclick="closeModalAndOpenContact(event, this.href);" class="btn btn-primary rounded-pill py-3 px-5">Explore Commercial &
+                        <a href="https://adelaidesolarservices.com.au/#contact"
+                            onclick="closeModalAndOpenContact(event, this.href);"
+                            class="btn btn-primary rounded-pill py-3 px-5">Explore Commercial &
                             Industrial</a>
                     </div>
                 </div>
@@ -969,7 +973,9 @@
                         <span class="border rounded px-2 py-1 text-muted small">Energy Management</span>
                     </div>
 
-                    <a href="https://adelaidesolarservices.com.au/#contact" onclick="closeModalAndOpenContact(event, this.href);" class="btn btn-success rounded-pill py-3 px-4">Request a Commercial Energy
+                    <a href="https://adelaidesolarservices.com.au/#contact"
+                        onclick="closeModalAndOpenContact(event, this.href);"
+                        class="btn btn-success rounded-pill py-3 px-4">Request a Commercial Energy
                         Assessment</a>
                 </div>
                 <div class="col-lg-6">
@@ -1095,7 +1101,9 @@
                     <p class="lead text-muted">Home Solar | Home Batteries | EV Charging</p>
                     <p class="text-muted">Systems are custom-designed around your household power consumption patterns,
                         available roof space, future electrification needs, and desired battery backup autonomy.</p>
-                    <a href="https://adelaidesolarservices.com.au/#contact" onclick="closeModalAndOpenContact(event, this.href);" class="btn btn-success rounded-pill px-4 py-2 mt-2">Explore Residential
+                    <a href="https://adelaidesolarservices.com.au/#contact"
+                        onclick="closeModalAndOpenContact(event, this.href);"
+                        class="btn btn-success rounded-pill px-4 py-2 mt-2">Explore Residential
                         Solutions</a>
                 </div>
                 <div class="col-lg-5 mt-4 mt-lg-0">
@@ -1380,7 +1388,9 @@
                     <a href="https://salesagent.greensketch.ai/au?code=1baecd21-4063-4b92-9b70-7cae220183bb"
                         target="_blank" rel="noopener"
                         class="btn btn-light text-primary rounded-pill px-5 py-3 fw-bold">Get a Free Quote</a>
-                    <a href="https://adelaidesolarservices.com.au/#contact" onclick="closeModalAndOpenContact(event, this.href);" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold">Discuss a Commercial
+                    <a href="https://adelaidesolarservices.com.au/#contact"
+                        onclick="closeModalAndOpenContact(event, this.href);"
+                        class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold">Discuss a Commercial
                         Project</a>
                 </div>
             </div>
@@ -1424,12 +1434,17 @@
                         <h1 class="mb-4">Start with a No-obligation Quote</h1>
                         <p class="mb-4 pb-2 text-muted">Tell us about your site and energy goals—our Adelaide team
                             provides a customised system proposal, ROI estimate and compliance roadmap at no cost.</p>
-                        <form id="quoteForm" aria-label="Request a quote form">
+
+                        <form id="quoteForm" aria-label="Request a quote form" novalidate>
                             <div class="row g-3">
+                                <!-- Honeypot field (hidden from legitimate users, tricks bots) -->
+                                <div style="display:none;" aria-hidden="true">
+                                    <label for="website">Leave this empty</label>
+                                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                                </div>
+
                                 <div class="col-12 col-sm-6">
                                     <label class="form-label visually-hidden" for="quote-name">Name</label>
-                                    <input type="text" id="website" name="website" autocomplete="off"
-                                        style="display:none">
                                     <input id="quote-name" name="name" type="text" class="form-control border-0"
                                         placeholder="Full Name" style="height:55px;" required>
                                 </div>
@@ -1467,13 +1482,47 @@
                                         required></textarea>
                                 </div>
 
+                                <!-- ADDED: Anti-Spam Canvas CAPTCHA Row -->
+                                <div class="col-12">
+                                    <div class="p-3 bg-light rounded-3 border">
+                                        <label
+                                            class="form-label text-secondary small font-monospace text-uppercase fw-semibold mb-2 d-block">
+                                            <i class="bi bi-shield-check me-1 text-success"></i> Security Verification
+                                        </label>
+                                        <div class="row g-2 align-items-center">
+                                            <div class="col-12 col-sm-6">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <div
+                                                        class="bg-white rounded border flex-grow-1 p-1 d-flex align-items-center justify-center">
+                                                        <canvas id="quoteCaptchaCanvas" width="200" height="46"
+                                                            style="cursor:pointer;"
+                                                            title="Click to refresh CAPTCHA"></canvas>
+                                                    </div>
+                                                    <button type="button" id="refreshQuoteCaptcha"
+                                                        class="btn btn-outline-secondary" style="height:48px;"
+                                                        title="Refresh CAPTCHA">
+                                                        <i class="bi bi-arrow-clockwise fs-5"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6">
+                                                <label for="quote-captcha" class="visually-hidden">Enter CAPTCHA
+                                                    Code</label>
+                                                <input type="text" id="quote-captcha" name="captcha"
+                                                    class="form-control border-0" placeholder="Enter answer or code"
+                                                    style="height:48px;" required autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="col-12">
                                     <button class="btn btn-success rounded-pill py-3 px-5" type="submit">
                                         Request My Quote
                                     </button>
                                 </div>
-                                <div id="quoteResult" class="alert mt-3 d-none" role="alert">
-                                </div>
+
+                                <div id="quoteResult" class="alert mt-3 d-none" role="alert"></div>
                             </div>
                         </form>
                         <p class="mt-4 text-muted small"><i class="fas fa-lock me-1"></i>We respect your privacy. Your
@@ -1481,6 +1530,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
     <!-- Quote End -->

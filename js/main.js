@@ -87,4 +87,154 @@
         }
     }
 
+    // --- ANTI-SPAM & CAPTCHA ENGINE ---
+    "use strict";
+
+    let currentCaptchaAnswer = "";
+    const pageLoadTime = Date.now();
+
+    // Replace with your copied Google Web App URL
+    const GOOGLE_SCRIPT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxoL-hmpTj_0dyiuF_pNSIQg_gy90BC_hF8-OiI4SzVkQ0RaJ6pSby_ILrwaGJBJ1cc/exec";
+
+    function renderQuoteCaptcha() {
+        const canvas = document.getElementById("quoteCaptchaCanvas");
+        if (!canvas) return;
+
+        const ctx = canvas.getContext("2d");
+        const useMathEquation = Math.random() > 0.35;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Visual noise
+        for (let i = 0; i < 6; i++) {
+            ctx.strokeStyle = `rgba(${Math.random()*180}, ${Math.random()*180}, ${Math.random()*220}, 0.2)`;
+            ctx.lineWidth = Math.floor(Math.random() * 2) + 1;
+            ctx.beginPath();
+            ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+            ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+            ctx.stroke();
+        }
+
+        let labelText = "";
+        if (useMathEquation) {
+            const numA = Math.floor(Math.random() * 12) + 1;
+            const numB = Math.floor(Math.random() * 9) + 1;
+            const isAdd = Math.random() > 0.4;
+
+            if (isAdd) {
+                labelText = `${numA} + ${numB} = ?`;
+                currentCaptchaAnswer = (numA + numB).toString();
+            } else {
+                const high = Math.max(numA, numB);
+                const low = Math.min(numA, numB);
+                labelText = `${high} - ${low} = ?`;
+                currentCaptchaAnswer = (high - low).toString();
+            }
+        } else {
+            const charset = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+            currentCaptchaAnswer = "";
+            for (let i = 0; i < 5; i++) {
+                currentCaptchaAnswer += charset.charAt(Math.floor(Math.random() * charset.length));
+            }
+            labelText = currentCaptchaAnswer.split('').join(' ');
+        }
+
+        ctx.font = "bold 20px sans-serif";
+        ctx.fillStyle = "#198754";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        ctx.save();
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.rotate((Math.random() - 0.5) * 0.12);
+        ctx.fillText(labelText, 0, 0);
+        ctx.restore();
+    }
+
+    $(document).ready(function () {
+        renderQuoteCaptcha();
+
+        $(document).on("click", "#refreshQuoteCaptcha, #quoteCaptchaCanvas", function () {
+            renderQuoteCaptcha();
+            $("#quote-captcha").val("");
+        });
+
+        // Form Submission Handler
+        $("#quoteForm").on("submit", function (e) {
+            e.preventDefault();
+
+            const $form = $(this);
+            const $submitBtn = $form.find("button[type='submit']");
+            const $resultBox = $("#quoteResult");
+
+            $resultBox.removeClass("d-block alert-success alert-danger alert-warning").addClass("d-none");
+
+            // 1. Anti-Spam Check: Honeypot Validation
+            const honeypotVal = $("#website").val();
+            if (honeypotVal && honeypotVal.trim() !== "") {
+                $resultBox.removeClass("d-none").addClass("d-block alert-danger")
+                    .text("Automated submission detected.");
+                return false;
+            }
+
+            // 2. Anti-Spam Check: Minimum Time Threshold (2.5 seconds)
+            if ((Date.now() - pageLoadTime) < 2500) {
+                $resultBox.removeClass("d-none").addClass("d-block alert-warning")
+                    .text("Please take a moment before submitting.");
+                return false;
+            }
+
+            // 3. Anti-Spam Check: CAPTCHA Validation
+            const userAns = $("#quote-captcha").val().trim();
+            if (!userAns || userAns.toLowerCase() !== currentCaptchaAnswer.toLowerCase()) {
+                $resultBox.removeClass("d-none").addClass("d-block alert-danger")
+                    .text("Incorrect security answer. Please try again.");
+                renderQuoteCaptcha();
+                $("#quote-captcha").val("").focus();
+                return false;
+            }
+
+            // --- ALL ANTI-SPAM CHECKS PASSED: POST TO GOOGLE WEBHOOK ---
+            const formData = {
+                name: $("#quote-name").val().trim(),
+                email: $("#quote-email").val().trim(),
+                phone: $("#quote-phone").val().trim(),
+                service: $("#quote-service").val(),
+                message: $("#quote-message").val().trim()
+            };
+
+            // Disable button during network request
+            $submitBtn.prop("disabled", true).html('<span class="spinner-border spinner-border-sm me-2" role="status"></span>Sending...');
+
+            $.ajax({
+                url: GOOGLE_SCRIPT_WEBHOOK_URL,
+                type: "POST",
+                dataType: "json",
+                // Uses text/plain contentType to prevent CORS pre-flight restrictions with Google Apps Script
+                contentType: "text/plain;charset=utf-8", 
+                data: JSON.stringify(formData),
+                success: function (response) {
+                    if (response && response.result === "success") {
+                        $resultBox.removeClass("d-none").addClass("d-block alert-success")
+                            .html('<i class="fas fa-check-circle me-1"></i> Thank you! Your quote request has been sent successfully.');
+                        $form[0].reset();
+                        renderQuoteCaptcha();
+                    } else {
+                        $resultBox.removeClass("d-none").addClass("d-block alert-danger")
+                            .text("Something went wrong while saving your request. Please try again.");
+                    }
+                },
+                error: function () {
+                    $resultBox.removeClass("d-none").addClass("d-block alert-danger")
+                        .text("Unable to connect to server. Please check your connection and try again.");
+                },
+                complete: function () {
+                    $submitBtn.prop("disabled", false).html("Request My Quote");
+                }
+            });
+        });
+    });
+
 })(jQuery);
