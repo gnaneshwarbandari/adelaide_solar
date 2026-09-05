@@ -94,7 +94,7 @@
     const pageLoadTime = Date.now();
 
     // Replace with your copied Google Web App URL
-    const GOOGLE_SCRIPT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwXxXt5EnCanW8OSb1qiSNPWfem3neXtjUpotYzv3Wv_0mCKP9UvdXAIZ3kDQzkkPII/exec";
+    const GOOGLE_SCRIPT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzOwSFJ8jZJsv5tCdOWoCFDTClJjeuRJ3_RsJY3yG3bf-MXKzum_It45pmdoSj7fHxc/exec";
 
     function renderQuoteCaptcha() {
         const canvas = document.getElementById("quoteCaptchaCanvas");
