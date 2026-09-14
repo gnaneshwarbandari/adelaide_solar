@@ -78,6 +78,7 @@
         window.lightbox.init();
       }
     }
+    console.log("Gallery container: ", galleryContainer);
   }
 
   window.addEventListener('resize', updatePageImages);
