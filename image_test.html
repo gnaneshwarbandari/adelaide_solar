@@ -3,189 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Drive Slideshow</title>
+  <title>Solar Services Asset Manager</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: sans-serif; background: #0f172a; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; padding: 20px; }
+    
+    .container { max-width: 1100px; margin: 0 auto; }
+    
+    /* Category Navigation */
+    .tabs { display: flex; gap: 12px; margin-bottom: 24px; border-bottom: 2px solid #334155; padding-bottom: 12px; }
+    .tab-btn { background: #1e293b; color: #94a3b8; border: 1px solid #475569; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+    .tab-btn.active, .tab-btn:hover { background: #0284c7; color: #fff; border-color: #38bdf8; }
 
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      height: 450px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      background: #1e293b;
-    }
+    /* Layout Sections */
+    .section-title { margin: 24px 0 12px 0; color: #38bdf8; font-size: 1.2rem; }
+    
+    .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .card { background: #1e293b; border-radius: 8px; padding: 12px; border: 1px solid #334155; }
+    .card h4 { margin-bottom: 8px; color: #cbd5e1; font-size: 0.95rem; }
+    
+    /* Dynamic Aspect Ratio Containers */
+    .img-wrapper { width: 100%; overflow: hidden; border-radius: 6px; background: #020617; position: relative; }
+    .img-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    
+    .ratio-16-9 { aspect-ratio: 16 / 9; }
+    .ratio-4-3 { aspect-ratio: 4 / 3; }
+    .ratio-1-1 { aspect-ratio: 1 / 1; }
 
-    .slide {
-      display: none;
-      width: 100%;
-      height: 100%;
-    }
+    /* Gallery Grid */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
 
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Next & previous buttons */
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      padding: 12px 18px;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      background-color: rgba(0,0,0,0.4);
-      border-radius: 50%;
-      user-select: none;
-      border: none;
-      transition: background-color 0.3s;
-    }
-
-    .prev:hover, .next:hover {
-      background-color: rgba(0,0,0,0.8);
-    }
-
-    .prev { left: 16px; }
-    .next { right: 16px; }
-
-    /* Indicator Dots */
-    .dots-container {
-      text-align: center;
-      margin-top: 15px;
-    }
-
-    .dot {
-      cursor: pointer;
-      height: 12px;
-      width: 12px;
-      margin: 0 4px;
-      background-color: #475569;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.3s;
-    }
-
-    .active, .dot:hover {
-      background-color: #38bdf8;
-    }
-
-    .loader {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      font-size: 18px;
-      color: #94a3b8;
-    }
+    .loader { text-align: center; padding: 40px; color: #94a3b8; font-size: 1.1rem; }
   </style>
 </head>
 <body>
 
-  <h2>Google Drive Image Slideshow</h2>
+<div class="container">
+  <h2>Solar Asset Showcase</h2>
+  <br>
 
-  <div class="slideshow-container" id="slideshow">
-    <div class="loader" id="loader">Loading images from Google Drive...</div>
+  <!-- Folder / Category Selection -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="loadCategory('solar-panel', this)">Solar Panels</button>
+    <button class="tab-btn" onclick="loadCategory('solar-battery', this)">Solar Batteries</button>
   </div>
 
-  <div class="dots-container" id="dots"></div>
+  <div id="content-area">
+    <div class="loader">Loading assets from Google Drive...</div>
+  </div>
+</div>
 
-  <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzB0xI_wyKPXr7rm1iKc9CW8dOyCm9FBo6TI6x4VE5vyJ3o1b6fs5BGKPmhWdAs-Is4/exec";
-    let slideIndex = 0;
-    let slides = [];
-    let dots = [];
-    let autoSlideTimer;
+<script>
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxe_4AwFAnPjH2kdK_Ajxcx1x49v7COH5P0azptrzrH1wQsJtR3PKESLtnn4ABO8N56/exec";
+  let currentData = null;
+  let currentCategory = "solar-panel";
 
-    async function initSlideshow() {
-      try {
-        const response = await fetch(SCRIPT_URL);
-        const images = await response.json();
-
-        if (!images || images.length === 0) {
-          document.getElementById('loader').innerText = "No images found in folder.";
-          return;
-        }
-
-        const slideshowContainer = document.getElementById('slideshow');
-        const dotsContainer = document.getElementById('dots');
-        slideshowContainer.innerHTML = ''; // Clear loader
-
-        // Build Slides and Dots
-        images.forEach((img, index) => {
-          const slideDiv = document.createElement('div');
-          slideDiv.className = 'slide';
-          slideDiv.innerHTML = `<img src="${img.url}" alt="${img.name}" loading="lazy" />`;
-          slideshowContainer.appendChild(slideDiv);
-
-          const dotSpan = document.createElement('span');
-          dotSpan.className = 'dot';
-          dotSpan.onclick = () => currentSlide(index);
-          dotsContainer.appendChild(dotSpan);
-        });
-
-        // Add Nav Buttons
-        slideshowContainer.innerHTML += `
-          <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-          <button class="next" onclick="changeSlide(1)">&#10095;</button>
-        `;
-
-        slides = document.getElementsByClassName("slide");
-        dots = document.getElementsByClassName("dot");
-
-        showSlide(slideIndex);
-        startAutoSlide();
-
-      } catch (err) {
-        console.error("Error fetching images:", err);
-        document.getElementById('loader').innerText = "Failed to load slideshow.";
-      }
+  async function loadCategory(category, element) {
+    currentCategory = category;
+    
+    if (element) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      element.classList.add('active');
     }
 
-    function showSlide(n) {
-      if (slides.length === 0) return;
+    const container = document.getElementById('content-area');
+    container.innerHTML = '<div class="loader">Loading folder contents...</div>';
 
-      if (n >= slides.length) { slideIndex = 0; }
-      if (n < 0) { slideIndex = slides.length - 1; }
+    try {
+      const response = await fetch(`${SCRIPT_URL}?category=${category}`, { redirect: 'follow' });
+      currentData = await response.json();
 
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-        dots[i].classList.remove("active");
+      if (currentData.error) {
+        container.innerHTML = `<div class="loader">${currentData.error}</div>`;
+        return;
       }
 
-      slides[slideIndex].style.display = "block";
-      dots[slideIndex].classList.add("active");
+      renderImages();
+    } catch (err) {
+      console.error(err);
+      container.innerHTML = '<div class="loader">Error loading images from Drive.</div>';
     }
+  }
 
-    function changeSlide(n) {
-      resetAutoSlide();
-      showSlide(slideIndex += n);
+  function renderImages() {
+    if (!currentData) return;
+
+    const isMobile = window.innerWidth <= 768;
+    const container = document.getElementById('content-area');
+    
+    // Choose appropriate aspect ratio and image file based on screen size
+    const heroImg = isMobile ? (currentData.hero.mobile || currentData.hero.desktop) : (currentData.hero.desktop || currentData.hero.mobile);
+    const heroRatio = isMobile ? 'ratio-4-3' : 'ratio-16-9';
+
+    const installImg = currentData.installation.desktop || currentData.installation.mobile;
+    const installRatio = 'ratio-4-3';
+
+    const howImg = isMobile ? (currentData.howItWorks.mobile || currentData.howItWorks.desktop) : (currentData.howItWorks.desktop || currentData.howItWorks.mobile);
+    const howRatio = isMobile ? 'ratio-4-3' : 'ratio-16-9';
+
+    const galleryRatio = isMobile ? 'ratio-1-1' : 'ratio-4-3';
+
+    let html = `
+      <h3 class="section-title">Core Page Sections (${isMobile ? 'Mobile View' : 'Desktop View'})</h3>
+      <div class="featured-grid">
+        ${renderCard('Hero Banner', heroImg, heroRatio)}
+        ${renderCard('Installation', installImg, installRatio)}
+        ${renderCard('How It Works', howImg, howRatio)}
+      </div>
+
+      <h3 class="section-title">Gallery Showcase</h3>
+      <div class="gallery-grid">
+        ${currentData.gallery.map((img, i) => `
+          <div class="card">
+            <h4>Gallery Image ${i + 1}</h4>
+            <div class="img-wrapper ${galleryRatio}">
+              <img src="${img.url}" alt="${img.name}" loading="lazy" />
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+    container.innerHTML = html;
+  }
+
+  function renderCard(title, imgObj, ratioClass) {
+    if (!imgObj || !imgObj.url) {
+      return `
+        <div class="card">
+          <h4>${title}</h4>
+          <div class="img-wrapper ${ratioClass}" style="display:flex;align-items:center;justify-content:center;color:#64748b;">
+            Missing Image
+          </div>
+        </div>`;
     }
+    return `
+      <div class="card">
+        <h4>${title}</h4>
+        <div class="img-wrapper ${ratioClass}">
+          <img src="${imgObj.url}" alt="${title}" loading="lazy" />
+        </div>
+      </div>
+    `;
+  }
 
-    function currentSlide(n) {
-      resetAutoSlide();
-      showSlide(slideIndex = n);
-    }
+  // Re-render aspect ratios dynamically if window resizes between desktop and mobile break points
+  window.addEventListener('resize', () => {
+    renderImages();
+  });
 
-    function startAutoSlide() {
-      autoSlideTimer = setInterval(() => {
-        showSlide(slideIndex += 1);
-      }, 4000); // Transitions every 4 seconds
-    }
+  // Initial Load
+  loadCategory('solar-panel');
+</script>
 
-    function resetAutoSlide() {
-      clearInterval(autoSlideTimer);
-      startAutoSlide();
-    }
-
-    // Run on load
-    initSlideshow();
-  </script>
 </body>
 </html>
