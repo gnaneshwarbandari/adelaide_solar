@@ -1,10 +1,6 @@
-/**
- * Dynamic Drive Image Loader
- * Fetches images from Google Apps Script and updates designated image containers.
- */
 (function () {
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzB0xI_wyKPXr7rm1iKc9CW8dOyCm9FBo6TI6x4VE5vyJ3o1b6fs5BGKPmhWdAs-Is4/exec";
-  const CATEGORY = "solar-panel"; // Set folder category
+  const CATEGORY = "solar-panel";
 
   let driveData = null;
 
@@ -15,9 +11,7 @@
         redirect: "follow"
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
       driveData = await response.json();
       updatePageImages();
@@ -31,7 +25,6 @@
 
     const isMobile = window.innerWidth <= 768;
 
-    // Helper to get correct URL based on availability and device
     const getUrl = (section) => {
       if (!driveData[section]) return null;
       if (isMobile) {
@@ -49,42 +42,44 @@
       if (heroUrl) heroImg.src = heroUrl;
     }
 
-    // 2. Introduction Image (Solar Panel System)
+    // 2. Introduction Image
     const introImg = document.querySelector('[data-img-key="intro"]');
     if (introImg) {
       const introUrl = getUrl('installation');
       if (introUrl) introImg.src = introUrl;
     }
 
-    // 3. How It Works / Installation Image
+    // 3. Installation Image
     const installImg = document.querySelector('[data-img-key="installation"]');
     if (installImg) {
       const installUrl = getUrl('howItWorks');
       if (installUrl) installImg.src = installUrl;
     }
 
-    // 4. Future Integration / Existing System Image
+    // 4. Future Integration Image
     const futureImg = document.querySelector('[data-img-key="future"]');
     if (futureImg && driveData.gallery && driveData.gallery[0]) {
       futureImg.src = driveData.gallery[0].url;
     }
 
-    // 5. Dynamic Gallery Grid
+    // 5. Dynamic Gallery Update
     const galleryContainer = document.getElementById('dynamic-gallery');
     if (galleryContainer && driveData.gallery && driveData.gallery.length > 0) {
       galleryContainer.innerHTML = driveData.gallery.map((img, index) => `
         <div class="col-lg-4 col-md-6">
-          <a href="${img.url}" data-lightbox="solar-panels">
+          <a href="${img.url}" data-lightbox="solar-panels" data-title="Solar Panel Project ${index + 1}">
             <img src="${img.url}" class="img-fluid rounded w-100 shadow-sm" alt="Solar panel project ${index + 1}" style="aspect-ratio: ${isMobile ? '1/1' : '4/3'}; object-fit: cover;" loading="lazy">
           </a>
         </div>
       `).join('');
+
+      // Reinitialize Lightbox if available
+      if (window.lightbox && typeof window.lightbox.init === 'function') {
+        window.lightbox.init();
+      }
     }
   }
 
-  // Handle screen resize to switch between mobile and desktop image sources
   window.addEventListener('resize', updatePageImages);
-
-  // Initialize on DOM ready
   document.addEventListener('DOMContentLoaded', fetchDriveImages);
 })();
