@@ -2,7 +2,7 @@
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzB0xI_wyKPXr7rm1iKc9CW8dOyCm9FBo6TI6x4VE5vyJ3o1b6fs5BGKPmhWdAs-Is4/exec";
   const CATEGORY = "solar-panel";
 
-  let driveData = null;
+  let driveData = [];
 
   async function fetchDriveImages() {
     try {
@@ -10,13 +10,11 @@
         method: "GET",
         redirect: "follow"
       });
-      console.log(response);
 
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
       driveData = await response.json();
-      console.log(response);
-      console.log(driveData);
+      console.log("Drive Data Array Loaded:", driveData);
       updatePageImages();
     } catch (err) {
       console.error("Failed to load dynamic images from Drive:", err);
@@ -24,68 +22,60 @@
   }
 
   function updatePageImages() {
-    console.log("Updating Images....");
-    if (!driveData) return;
+    if (!Array.isArray(driveData) || driveData.length === 0) return;
 
     const isMobile = window.innerWidth <= 768;
 
-    const getUrl = (section) => {
-      if (!driveData[section]) return null;
-      if (isMobile) {
-        return (driveData[section].mobile && driveData[section].mobile.url) ||
-               (driveData[section].desktop && driveData[section].desktop.url);
-      }
-      return (driveData[section].desktop && driveData[section].desktop.url) ||
-             (driveData[section].mobile && driveData[section].mobile.url);
-    };
+    // Helper to find image by key substring in name
+    const findImage = (key) => driveData.find(img => img.name.toLowerCase().includes(key));
 
     // 1. Hero Image
     const heroImg = document.querySelector('[data-img-key="hero"]');
     if (heroImg) {
-      const heroUrl = getUrl('hero');
-      if (heroUrl) heroImg.src = heroUrl;
+      const hero = findImage('hero');
+      if (hero) heroImg.src = hero.url;
     }
 
     // 2. Introduction Image
     const introImg = document.querySelector('[data-img-key="intro"]');
     if (introImg) {
-      const introUrl = getUrl('installation');
-      if (introUrl) introImg.src = introUrl;
+      const intro = findImage('intro') || findImage('installation');
+      if (intro) introImg.src = intro.url;
     }
 
     // 3. Installation Image
     const installImg = document.querySelector('[data-img-key="installation"]');
     if (installImg) {
-      const installUrl = getUrl('howItWorks');
-      if (installUrl) installImg.src = installUrl;
+      const install = findImage('how_it_works') || findImage('howitworks');
+      if (install) installImg.src = install.url;
     }
 
-    // 4. Future Integration Image
-    const futureImg = document.querySelector('[data-img-key="future"]');
-    if (futureImg && driveData.gallery && driveData.gallery[0]) {
-      futureImg.src = driveData.gallery[0].url;
-    }
-
-    // 5. Dynamic Gallery Update
-    console.log("Dynamic galley update");
-    console.log(driveData);
+    // 4. Dynamic Gallery Update (Pulls all images or non-keyed images)
     const galleryContainer = document.getElementById('dynamic-gallery');
-    if (galleryContainer && driveData.gallery && driveData.gallery.length > 0) {
-      console.log("gallerycontainer updating..");
-      galleryContainer.innerHTML = driveData.gallery.map((img, index) => `
+    if (galleryContainer) {
+      // Filter out dedicated section images if needed, or use full array
+      const galleryImages = driveData.filter(img => 
+        !img.name.includes('hero') && 
+        !img.name.includes('intro') && 
+        !img.name.includes('how_it_works')
+      );
+
+      // Fallback to all images if no specific gallery prefix is used
+      const itemsToRender = galleryImages.length > 0 ? galleryImages : driveData;
+
+      galleryContainer.innerHTML = itemsToRender.map((img, index) => `
         <div class="col-lg-4 col-md-6">
           <a href="${img.url}" data-lightbox="solar-panels" data-title="Solar Panel Project ${index + 1}">
-            <img src="${img.url}" class="img-fluid rounded w-100 shadow-sm" alt="Solar panel project ${index + 1}" style="aspect-ratio: ${isMobile ? '1/1' : '4/3'}; object-fit: cover;" loading="lazy">
+            <img src="${img.url}" class="img-fluid rounded w-100 shadow-sm" alt="${img.name}" style="aspect-ratio: ${isMobile ? '1/1' : '4/3'}; object-fit: cover;" loading="lazy">
           </a>
         </div>
       `).join('');
 
-      // Reinitialize Lightbox if available
+      // Reinitialize Lightbox for dynamically created elements
       if (window.lightbox && typeof window.lightbox.init === 'function') {
         window.lightbox.init();
       }
     }
-    console.log("Gallery container: ", galleryContainer);
   }
 
   window.addEventListener('resize', updatePageImages);
