@@ -34,28 +34,42 @@
     // Helper to find image by key substring in name
     const findImage = (key) => driveData.find(img => img.name.toLowerCase().includes(key));
 
-    // 1. Hero Image
-    const heroImg = document.querySelector('[data-img-key="hero"]');
-    if (heroImg) {
-      const hero = findImage('hero');
-      if (hero) heroImg.src = hero.url;
+    // 1. Section1 Image
+    const section1 = document.querySelector('[data-img-key="section1"]');
+    if (section1) {
+      const sec1 = findImage('section1');
+      if (sec1) section1.src = sec1.url;
     }
 
-    // 2. Introduction Image
-    const introImg = document.querySelector('[data-img-key="intro"]');
-    if (introImg) {
-      const intro = findImage('intro') || findImage('installation');
-      if (intro) introImg.src = intro.url;
+    // 2. Section2 Image
+    const section2 = document.querySelector('[data-img-key="section2"]');
+    if (section2) {
+      const sec2 = findImage('section1') || findImage('section2');
+      if (sec2) section2.src = sec2.url;
     }
 
-    // 3. Installation Image
-    const installImg = document.querySelector('[data-img-key="installation"]');
-    if (installImg) {
-      const install = findImage('how_it_works') || findImage('howitworks');
-      if (install) installImg.src = install.url;
+    // 3. Section3 Image
+    const section3 = document.querySelector('[data-img-key="section3"]');
+    if (section3) {
+      const sec3 = findImage('section2') || findImage('section3');
+      if (sec3) section3.src = sec3.url;
     }
 
-    // 4. Dynamic Gallery Update (Pulls all images or non-keyed images)
+    // 4. Section4 Image
+    const section4 = document.querySelector('[data-img-key="section4"]');
+    if (section4) {
+      const sec4 = findImage('section3') || findImage('section4');
+      if (sec4) section4.src = sec4.url;
+    }
+
+    // 5. Section5 Image
+    const section5 = document.querySelector('[data-img-key="section5"]');
+    if (section5) {
+      const sec5 = findImage('section4') || findImage('section5');
+      if (sec5) section5.src = sec5.url;
+    }
+
+    // 6. Dynamic Gallery Update (Pulls all images or non-keyed images)
     const galleryContainer = document.getElementById('dynamic-gallery');
     if (galleryContainer) {
       // Filter out dedicated section images if needed, or use full array
