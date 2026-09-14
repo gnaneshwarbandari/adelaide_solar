@@ -14,6 +14,8 @@
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
       driveData = await response.json();
+      console.log(response);
+      console.log(driveData);
       updatePageImages();
     } catch (err) {
       console.error("Failed to load dynamic images from Drive:", err);
