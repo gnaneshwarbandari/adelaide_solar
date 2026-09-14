@@ -1,6 +1,11 @@
 (function () {
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzB0xI_wyKPXr7rm1iKc9CW8dOyCm9FBo6TI6x4VE5vyJ3o1b6fs5BGKPmhWdAs-Is4/exec";
-  const CATEGORY = "solar-panel";
+  // Automatically extracts page name (e.g., /pages/solar-panel.html -> "solar-panel")
+  const path = window.location.pathname;
+  const pageName = path.substring(path.lastIndexOf('/') + 1).replace('.html', '');
+
+  // Fallback to "solar-panel" if at root or index
+  const CATEGORY = (pageName && pageName !== 'index') ? pageName : "solar-panel";
 
   let driveData = [];
 
