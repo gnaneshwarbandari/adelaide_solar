@@ -64,7 +64,8 @@
     }
 
     // 5. Dynamic Gallery Update
-    console.log("Dynamic galley update", driveData);
+    console.log("Dynamic galley update");
+    console.log(driveData);
     const galleryContainer = document.getElementById('dynamic-gallery');
     if (galleryContainer && driveData.gallery && driveData.gallery.length > 0) {
       console.log("gallerycontainer updating..");
