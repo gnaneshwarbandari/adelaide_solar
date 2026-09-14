@@ -6,6 +6,7 @@
 
   // Fallback to "solar-panel" if at root or index
   const CATEGORY = (pageName && pageName !== 'index') ? pageName : "solar-panel";
+  console.log(CATEGORY);
 
   let driveData = [];
 
