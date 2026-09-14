@@ -21,6 +21,7 @@
   }
 
   function updatePageImages() {
+    console.log("Updating Images....");
     if (!driveData) return;
 
     const isMobile = window.innerWidth <= 768;
@@ -63,8 +64,10 @@
     }
 
     // 5. Dynamic Gallery Update
+    console.log("Dynamic galley update");
     const galleryContainer = document.getElementById('dynamic-gallery');
     if (galleryContainer && driveData.gallery && driveData.gallery.length > 0) {
+      console.log("gallerycontainer updating..");
       galleryContainer.innerHTML = driveData.gallery.map((img, index) => `
         <div class="col-lg-4 col-md-6">
           <a href="${img.url}" data-lightbox="solar-panels" data-title="Solar Panel Project ${index + 1}">
